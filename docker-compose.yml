@@ -19,7 +19,7 @@ services:
     container_name: java_app
     restart: always
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
       MYSQL_HOST: db
       MYSQL_PORT: 3306
