@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>2-Tier Java App</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 15px;
+        }
+
+        .messages-section h2 {
+            color: #2d3748;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .message-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .message-list li {
+            background: #f7f8fc;
+            border-left: 5px solid #667eea;
+            padding: 15px 18px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            color: #4a5568;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .message-list li:hover {
+            transform: translateX(5px);
+            background: #edf2ff;
+        }
+
+        .empty-message {
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form-section {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+        }
+
+        .form-section h2 {
+            color: #2d3748;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .message-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .message-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        .submit-btn {
+            border: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #a0aec0;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .message-form {
+                flex-direction: column;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>💬 2-Tier Java App</h1>
+        <p>Simple message management system</p>
+    </div>
+
+    <div class="messages-section">
+        <h2>📋 Messages</h2>
+
+        <ul class="message-list">
+            <li th:each="msg : ${messages}"
+                th:text="${msg.message}">
+            </li>
+        </ul>
+    </div>
+
+    <div class="form-section">
+        <h2>✏️ Add New Message</h2>
+
+        <form action="/submit" method="post" class="message-form">
+
+            <input
+                type="text"
+                name="new_message"
+                class="message-input"
+                placeholder="Enter your message..."
+                required
+            />
+
+            <button type="submit" class="submit-btn">
+                Submit
+            </button>
+
+        </form>
+    </div>
+
+    <div class="footer">
+        2-Tier Java Application
+    </div>
+
+</div>
+
+</body>
+</html>
+```
