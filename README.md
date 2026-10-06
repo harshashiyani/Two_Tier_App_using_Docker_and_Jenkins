@@ -86,10 +86,10 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-- ### Step 3: Install Java 17 & Jenkins
+- ### Step 3: Install Java 21 & Jenkins
 ```
-# Install Java 17 (Amazon Corretto)
-sudo dnf install -y java-17-amazon-corretto-devel
+# Install Java 21 (Amazon Corretto)
+sudo dnf install java-21-amazon-corretto -y 
 
 # Import official Jenkins repo & key
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -118,7 +118,7 @@ Paste the password, install suggested plugins, and create an admin user.
 - From the Jenkins dashboard, select New Item.
 - Name the project, choose Pipeline, and click OK.
 
-2. Configure the Trigger:
+#### 2. Configure the Trigger:
 - Check Poll SCM
 - In Schedule type `H/2 * * * *`
   
