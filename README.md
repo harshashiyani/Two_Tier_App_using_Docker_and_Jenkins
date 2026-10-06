@@ -33,7 +33,7 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
                                                              +-----------------------------------+
 ```
 
-## 3. Step 1: AWS EC2 Instance Preparation
+## 3. AWS EC2 Instance Preparation
 ### 1. Launch EC2 Instance:
    Navigate to the AWS EC2 console.
    Launch a new instance using the Amazon Linux 2023 Kernal-6.18
@@ -53,9 +53,9 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
    ssh -i /path/to/key.pem ubuntu@<ec2-public-ip>
    ```
 
-## 4. Step 2: Install Dependencies on EC2   
-- ### Install Docker, Git & Buildx Plugin
-```bash
+## 4. Install Dependencies on EC2   
+- ### Step 1: Install Docker, Git & Buildx Plugin
+```
 # Update installed packages
 sudo dnf update -y
 
@@ -75,4 +75,34 @@ sudo curl -SL https://github.com/docker/buildx/releases/download/v0.17.1/buildx-
   -o /usr/local/lib/docker/cli-plugins/docker-buildx
 
 sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
-```  
+```
+
+- ### Step 2: Install Docker Compose
+```
+# Download the latest Docker Compose binary
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# Make it executable
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+- ### Step 3: Install Java 17 & Jenkins
+```
+# Install Java 17 (Amazon Corretto)
+sudo dnf install -y java-17-amazon-corretto-devel
+
+# Import official Jenkins repo & key
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+# Install Jenkins
+sudo dnf install -y jenkins
+
+# Grant Jenkins permission to run Docker commands
+sudo usermod -aG docker jenkins
+
+# Enable and start Jenkins
+sudo systemctl enable --now jenkins
+```
+
+
