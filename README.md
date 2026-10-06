@@ -41,7 +41,7 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
    Create and assign a new key pair for SSH access.
 
 ### 2. Configure Security Group:
-  #### - Create a security group with the following inbound rules:
+  - #### Create a security group with the following inbound rules:
    - Type: SSH, Protocol: TCP, Port: 22, Source: Your IP
    - Type: HTTP, Protocol: TCP, Port: 80, Source: Anywhere (0.0.0.0/0)
    - Type: Custom TCP, Protocol: TCP, Port: 8081 (for Java), Source: Anywhere (0.0.0.0/0)
