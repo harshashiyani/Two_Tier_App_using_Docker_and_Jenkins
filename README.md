@@ -117,7 +117,14 @@ Paste the password, install suggested plugins, and create an admin user.
 
 - From the Jenkins dashboard, select New Item.
 - Name the project, choose Pipeline, and click OK.
-####  2. Configure the Pipeline:
+
+2. Configure the Trigger:
+- Check Poll SCM
+- In Schedule type `H/2 * * * *`
+  
+<img width="1862" height="835" alt="8" src="https://github.com/user-attachments/assets/a56a44b5-a254-4096-808f-0683d06f4668" />
+
+####  3. Configure the Pipeline:
 
 - In the project configuration, scroll to the Pipeline section.
 - Set Definition to Pipeline script from SCM.
@@ -126,4 +133,26 @@ Paste the password, install suggested plugins, and create an admin user.
 - Verify the Script Path is Jenkinsfile.
 - Save the configuration.
 
-<img width="1862" height="835" alt="8" src="https://github.com/user-attachments/assets/a56a44b5-a254-4096-808f-0683d06f4668" />
+<img width="1875" height="932" alt="4" src="https://github.com/user-attachments/assets/b0d0c484-fa99-44f3-8738-6c8f0aee9dad" />
+
+
+#### 4. Run the Pipeline:
+- Click Build Now to trigger the pipeline manually for the first time.
+- Monitor the execution through the Stage View or Console Output.
+
+<img width="1919" height="948" alt="1" src="https://github.com/user-attachments/assets/f0ef92e2-1587-4c22-883e-f3a35fb5c3fd" />
+
+#### 5: Verify Deployment:
+- After a successful build, your Flask application will be accessible at `http://<your-ec2-public-ip>:8081`
+
+<img width="1906" height="865" alt="6" src="https://github.com/user-attachments/assets/4ae1f718-d3fb-417a-83e0-980b94cf6576" />
+
+<img width="1818" height="914" alt="7" src="https://github.com/user-attachments/assets/7a025fce-2575-4c47-a7d3-39c4010dd928" />
+
+
+## 5. Conclusion
+- The CI/CD pipeline is now fully operational. Any git push to the main branch of the configured GitHub repository will automatically trigger the Jenkins pipeline, which will build the new Docker image and deploy the updated application, ensuring a seamless and automated workflow from development to production.
+
+## 6. Infrastructure Diagram
+<img width="1560" height="903" alt="cicd_pipeline_diagram" src="https://github.com/user-attachments/assets/4137f691-93b9-416c-b464-fe7ebe94a83f" />
+
