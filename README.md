@@ -5,6 +5,7 @@ Two tier application using Docker and  Jenkins
 This document outlines the step-by-step process for deploying a 2-tier web application (Java + MySQL) on an AWS EC2 instance. The deployment is containerized using Docker and Docker Compose. A full CI/CD pipeline is established using Jenkins to automate the build and deployment process whenever new code is pushed to a GitHub repository.
 
 2. Architecture Diagram
+```
 +--------------------+        +---------------------+        +-----------------------------------+
 |  Developer (Local) | -----> | GitHub Repository   | -----> | AWS EC2 Instance                  |
 |  (Pushes code)     |        | (Source Code Mgmt)  |        |                                   |
@@ -30,9 +31,9 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
                                                              | | +---------------------------+ | |
                                                              | +-------------------------------+ |
                                                              +-----------------------------------+
+```
 
-
-3. Step 1: AWS EC2 Instance Preparation
+4. Step 1: AWS EC2 Instance Preparation
 1. Launch EC2 Instance:
    Navigate to the AWS EC2 console.
    Launch a new instance using the Amazon Linux 2023 Kernal-6.18
