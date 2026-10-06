@@ -105,4 +105,25 @@ sudo usermod -aG docker jenkins
 sudo systemctl enable --now jenkins
 ```
 
+- ### Step 4: Initial Jenkins Setup:
 
+Retrieve the initial admin password:
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+Access the Jenkins dashboard at `http://<ec2-public-ip>:8080`.
+Paste the password, install suggested plugins, and create an admin user.
+
+- ### Step 5: Jenkins Pipeline Creation and Execution
+#### 1. Create a New Pipeline Job in Jenkins:
+
+- From the Jenkins dashboard, select New Item.
+- Name the project, choose Pipeline, and click OK.
+####  2. Configure the Pipeline:
+
+- In the project configuration, scroll to the Pipeline section.
+- Set Definition to Pipeline script from SCM.
+- Choose Git as the SCM.
+- Enter your GitHub repository URL.
+- Verify the Script Path is Jenkinsfile.
+- Save the configuration.
+
+<img width="1862" height="835" alt="8" src="https://github.com/user-attachments/assets/a56a44b5-a254-4096-808f-0683d06f4668" />
